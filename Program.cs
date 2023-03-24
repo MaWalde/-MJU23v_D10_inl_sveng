@@ -55,10 +55,8 @@
                     }
                     else if (argument.Length == 1)
                     {
-                        Console.WriteLine("Write word in Swedish: "); //Kod lika som på delete, bryt ut och kalla på?
-                        string sweWord = Console.ReadLine();
-                        Console.Write("Write word in English: ");
-                        string engWord = Console.ReadLine();
+                        string sweWord, engWord;
+                        GetInput(out sweWord, out engWord);
                         dictionary.Add(new SweEngGloss(sweWord, engWord));
                     }
                 }
@@ -122,6 +120,14 @@
                 }
             }
             while (true);
+        }
+
+        private static void GetInput(out string sweWord, out string engWord)
+        {
+            Console.WriteLine("Write word in Swedish: "); //Kod lika som på delete, bryt ut och kalla på?
+            sweWord = Console.ReadLine();
+            Console.Write("Write word in English: ");
+            engWord = Console.ReadLine();
         }
 
         private static void Load(string[] argument)
