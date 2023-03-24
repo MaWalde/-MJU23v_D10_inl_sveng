@@ -125,21 +125,27 @@
 
         private static void Load(string[] argument)
         {
-
-            string input = "..\\..\\..\\dict\\sweeng.lis";
-            if (argument.Length == 2) input = argument[1];
-            using (StreamReader sr = new StreamReader(input))
+            try
             {
-                dictionary.Clear();
-                string line = sr.ReadLine();
-                while (line != null)
+                string input = "..\\..\\..\\dict\\sweeng.lis";
+                if (argument.Length == 2) input = argument[1];
+                using (StreamReader sr = new StreamReader(input))
                 {
-                    SweEngGloss gloss = new SweEngGloss(line);
-                    dictionary.Add(gloss);
-                    line = sr.ReadLine();
+                    dictionary.Clear();
+                    string line = sr.ReadLine();
+                    while (line != null)
+                    {
+                        SweEngGloss gloss = new SweEngGloss(line);
+                        dictionary.Add(gloss);
+                        line = sr.ReadLine();
+                    }
                 }
             }
-
+            catch (FileNotFoundException e)
+            {
+                Console.WriteLine($"The file '{e.FileName}' cannot be found");
+            }
+            catch (Exception e) { Console.WriteLine($"A problem has occured while reading the file: {e.Message}"); } //Säkrar här upp för eventuellt avvikande problem utöver "FileNotFound".
         }
     }
 }
