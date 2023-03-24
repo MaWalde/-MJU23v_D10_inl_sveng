@@ -22,9 +22,10 @@
             do
             {
                 Help();
-                Console.Write("> ");                                //Lägg till tillgängliga kommandon? ev. hjälp-metod?
+                Console.Write("> ");
                 string[] input = Console.ReadLine().Split();
                 string command = input[0];
+                Console.Clear();
                 if (command == "quit")
                 {
                     Console.WriteLine("Goodbye!");
