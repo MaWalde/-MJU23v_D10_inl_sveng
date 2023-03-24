@@ -27,6 +27,7 @@
                 if (command == "quit") //Fixa avslut
                 {
                     Console.WriteLine("Goodbye!");
+                    break;
                 }
                 else if (command == "load")
                 {
