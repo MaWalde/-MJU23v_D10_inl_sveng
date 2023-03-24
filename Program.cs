@@ -22,8 +22,8 @@
             do
             {
                 Console.Write("> ");                                //Lägg till tillgängliga kommandon? ev. hjälp-metod?
-                string[] argument = Console.ReadLine().Split();
-                string command = argument[0];
+                string[] input = Console.ReadLine().Split();
+                string command = input[0];
                 if (command == "quit")
                 {
                     Console.WriteLine("Goodbye!");
@@ -31,13 +31,13 @@
                 }
                 else if (command == "load")
                 {
-                    if (argument.Length == 2)
+                    if (input.Length == 2)
                     {
-                        Load(argument);
+                        Load(input);
                     }
-                    else if (argument.Length == 1)
+                    else if (input.Length == 1)
                     {
-                        Load(argument);
+                        Load(input);
                     }
                 }
                 else if (command == "list")
@@ -49,11 +49,11 @@
                 }
                 else if (command == "new")
                 {
-                    if (argument.Length == 3)
+                    if (input.Length == 3)
                     {
-                        dictionary.Add(new SweEngGloss(argument[1], argument[2]));
+                        dictionary.Add(new SweEngGloss(input[1], input[2]));
                     }
-                    else if (argument.Length == 1)
+                    else if (input.Length == 1)
                     {
                         string sweWord, engWord;
                         GetInput(out sweWord, out engWord);
@@ -62,7 +62,7 @@
                 }
                 else if (command == "delete")
                 {
-                    if (argument.Length == 3) 
+                    if (input.Length == 3) 
                     {
                         try
                         {
@@ -70,8 +70,8 @@
                             for (int i = 0; i < dictionary.Count; i++)
                             {
                                 SweEngGloss gloss = dictionary[i];
-                                if (string.Equals(gloss.word_swe, argument[1],StringComparison.OrdinalIgnoreCase) 
-                                    && string.Equals(gloss.word_eng, argument[2], StringComparison.OrdinalIgnoreCase))
+                                if (string.Equals(gloss.word_swe, input[1],StringComparison.OrdinalIgnoreCase) 
+                                    && string.Equals(gloss.word_eng, input[2], StringComparison.OrdinalIgnoreCase))
                                     index = i;
                             }
                             dictionary.RemoveAt(index);
@@ -81,7 +81,7 @@
                             Console.WriteLine($"An error occurred while removing the entry: {e.Message}");
                         }
                     }
-                    else if (argument.Length == 1)
+                    else if (input.Length == 1)
                     {
                         try
                         {
@@ -105,16 +105,16 @@
                 }
                 else if (command == "translate")
                 {
-                    if (argument.Length == 2)   
+                    if (input.Length == 2)   
                     {
-                        argument[0] = argument[1];
-                        Translate(argument);
+                        input[0] = input[1];
+                        Translate(input);
                     }
-                    else if (argument.Length == 1)
+                    else if (input.Length == 1)
                     {
                         Console.WriteLine("Write word to be translated: ");
-                        argument[0] = Console.ReadLine();
-                        Translate(argument);
+                        input[0] = Console.ReadLine();
+                        Translate(input);
                     }
                 }
                 else
