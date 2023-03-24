@@ -70,14 +70,15 @@
                             for (int i = 0; i < dictionary.Count; i++)
                             {
                                 SweEngGloss gloss = dictionary[i];
-                                if (gloss.word_swe == argument[1] && gloss.word_eng == argument[2])
+                                if (string.Equals(gloss.word_swe, argument[1],StringComparison.OrdinalIgnoreCase) 
+                                    && string.Equals(gloss.word_eng, argument[2], StringComparison.OrdinalIgnoreCase))
                                     index = i;
                             }
                             dictionary.RemoveAt(index);
                         }
                         catch (ArgumentOutOfRangeException e)
                         {
-                            Console.WriteLine($"An error occurred while removing the term: {e.Message}");
+                            Console.WriteLine($"An error occurred while removing the entry: {e.Message}");
                         }
                     }
                     else if (argument.Length == 1)
@@ -90,14 +91,15 @@
                             for (int i = 0; i < dictionary.Count; i++)
                             {
                                 SweEngGloss gloss = dictionary[i];
-                                if (gloss.word_swe == sweWord && gloss.word_eng == engWord)
+                                if (string.Equals(gloss.word_swe, sweWord, StringComparison.OrdinalIgnoreCase) 
+                                    && string.Equals(gloss.word_eng, engWord, StringComparison.OrdinalIgnoreCase))
                                     index = i;
                             }
                             dictionary.RemoveAt(index);
                         }
                         catch (ArgumentOutOfRangeException e) 
                         { 
-                            Console.WriteLine($"An error occurred while removing the term: {e.Message}"); 
+                            Console.WriteLine($"An error occurred while removing the entry: {e.Message}"); 
                         }
                     }
                 }
