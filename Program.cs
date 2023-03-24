@@ -73,12 +73,10 @@
                         }
                         dictionary.RemoveAt(index);
                     }
-                    else if (argument.Length == 1) //Fixa variabelnamn,
+                    else if (argument.Length == 1)
                     {
-                        Console.WriteLine("Write word in Swedish: "); //Kod lika som på new, bryt ut och kalla på?
-                        string sweWord = Console.ReadLine();
-                        Console.Write("Write word in English: ");
-                        string engWord = Console.ReadLine();
+                        string sweWord, engWord;
+                        GetInput(out sweWord,out engWord);
                         int index = -1;
                         for (int i = 0; i < dictionary.Count; i++)
                         {
