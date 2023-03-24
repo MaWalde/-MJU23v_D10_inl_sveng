@@ -24,14 +24,14 @@
                 Console.Write("> ");                                //Lägg till tillgängliga kommandon? ev. hjälp-metod?
                 string[] argument = Console.ReadLine().Split();
                 string command = argument[0];
-                if (command == "quit") //Fixa avslut
+                if (command == "quit") 
                 {
                     Console.WriteLine("Goodbye!");
                     break;
                 }
                 else if (command == "load")
                 {
-                    if (argument.Length == 2)                      // TODO: Lägg till Try-Catch för "argument[1]"
+                    if (argument.Length == 2)                     
                     {
                         Load(argument);
                     }
@@ -44,7 +44,7 @@
                 {
                     foreach (SweEngGloss gloss in dictionary)
                     {
-                        Console.WriteLine($"{gloss.word_swe,-10}  - {gloss.word_eng,-10}"); // -10? Återkom efter testkör
+                        Console.WriteLine($"{gloss.word_swe,-10}  - {gloss.word_eng}");
                     }
                 }
                 else if (command == "new")
