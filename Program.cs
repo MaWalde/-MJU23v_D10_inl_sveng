@@ -25,7 +25,6 @@
                 Console.Write("> ");
                 string[] input = Console.ReadLine().Split();
                 string command = input[0];
-                Console.Clear();
                 if (command == "quit")
                 {
                     Console.WriteLine("Goodbye!");
@@ -147,9 +146,9 @@
             {
                 foreach (SweEngGloss gloss in dictionary)  //Bryt ut foreach till båda translate.
                 {
-                    if (gloss.word_swe == argument[0])
+                    if (string.Equals(gloss.word_swe,argument[0], StringComparison.OrdinalIgnoreCase))
                         Console.WriteLine($"English for {gloss.word_swe} is {gloss.word_eng}");
-                    if (gloss.word_eng == argument[0])
+                    if (string.Equals(gloss.word_eng, argument[0], StringComparison.OrdinalIgnoreCase))
                         Console.WriteLine($"Swedish for {gloss.word_eng} is {gloss.word_swe}");
                 }
             }
