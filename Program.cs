@@ -62,7 +62,7 @@
                 }
                 else if (command == "delete")
                 {
-                    if (argument.Length == 3) //TBD: Lägg till kod som ignorerar versaler/gemener, samt try-catch
+                    if (argument.Length == 3) 
                     {
                         try
                         {
@@ -107,25 +107,13 @@
                 {
                     if (argument.Length == 2)  //Try-catch, 
                     {
-                        foreach (SweEngGloss gloss in dictionary)  //Bryt ut foreach till båda translate.
-                        {
-                            if (gloss.word_swe == argument[1])
-                                Console.WriteLine($"English for {gloss.word_swe} is {gloss.word_eng}");
-                            if (gloss.word_eng == argument[1])
-                                Console.WriteLine($"Swedish for {gloss.word_eng} is {gloss.word_swe}");
-                        }
+                        Translate(argument);
                     }
                     else if (argument.Length == 1)
                     {
                         Console.WriteLine("Write word to be translated: ");
-                        string s = Console.ReadLine();
-                        foreach (SweEngGloss gloss in dictionary)
-                        {
-                            if (gloss.word_swe == s)
-                                Console.WriteLine($"English for {gloss.word_swe} is {gloss.word_eng}");
-                            if (gloss.word_eng == s)
-                                Console.WriteLine($"Swedish for {gloss.word_eng} is {gloss.word_swe}");
-                        }
+                        argument[0] = Console.ReadLine();
+                        Translate(argument);
                     }
                 }
                 else
@@ -134,6 +122,17 @@
                 }
             }
             while (true);
+        }
+
+        private static void Translate(string[] argument)
+        {
+            foreach (SweEngGloss gloss in dictionary)  //Bryt ut foreach till båda translate.
+            {
+                if (gloss.word_swe == argument[1])
+                    Console.WriteLine($"English for {gloss.word_swe} is {gloss.word_eng}");
+                if (gloss.word_eng == argument[1])
+                    Console.WriteLine($"Swedish for {gloss.word_eng} is {gloss.word_swe}");
+            }
         }
 
         private static void GetInput(out string sweWord, out string engWord)
