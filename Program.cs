@@ -2,7 +2,7 @@
 {
     internal class Program
     {
-        static List<SweEngGloss> dictionary;  //Skapa ny lista? Omvandla till dictionary?
+        static List<SweEngGloss> dictionary = new();
         class SweEngGloss
         {
             public string word_swe, word_eng;
