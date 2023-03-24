@@ -105,7 +105,7 @@
                 }
                 else if (command == "translate")
                 {
-                    if (argument.Length == 2)  //Try-catch, 
+                    if (argument.Length == 2)   
                     {
                         Translate(argument);
                     }
@@ -126,18 +126,19 @@
 
         private static void Translate(string[] argument)
         {
+            if (argument[1]!=null) { argument[0] = argument[1]; }
             foreach (SweEngGloss gloss in dictionary)  //Bryt ut foreach till båda translate.
             {
-                if (gloss.word_swe == argument[1])
+                if (gloss.word_swe == argument[0])
                     Console.WriteLine($"English for {gloss.word_swe} is {gloss.word_eng}");
-                if (gloss.word_eng == argument[1])
+                if (gloss.word_eng == argument[0])
                     Console.WriteLine($"Swedish for {gloss.word_eng} is {gloss.word_swe}");
             }
         }
 
         private static void GetInput(out string sweWord, out string engWord)
         {
-            Console.WriteLine("Write word in Swedish: "); //Kod lika som på delete, bryt ut och kalla på?
+            Console.WriteLine("Write word in Swedish: ");
             sweWord = Console.ReadLine();
             Console.Write("Write word in English: ");
             engWord = Console.ReadLine();
