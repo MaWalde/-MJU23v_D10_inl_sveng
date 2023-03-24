@@ -21,6 +21,7 @@
             Console.WriteLine("Welcome to the dictionary app!");
             do
             {
+                Help();
                 Console.Write("> ");                                //Lägg till tillgängliga kommandon? ev. hjälp-metod?
                 string[] input = Console.ReadLine().Split();
                 string command = input[0];
@@ -123,6 +124,20 @@
                 }
             }
             while (true);
+        }
+        private static void Help()
+        {
+            Console.WriteLine($"\nEnter one of the following commands:\n\n"
+                + $"load\t\t\t\t\t- to load default list\n"
+                + $"load 'filepath'\t\t\t\t- to load custom list\n"
+                + $"list\t\t\t\t\t- to show current list\n"
+                + $"new\t\t\t\t\t- to add new entry to curren list\n"
+                + $"new 'swedish word' 'english word'\t- to add complete entry\n"
+                + $"delete\t\t\t\t\t- to remove entry\n"
+                + $"delete 'word' 'word in other lang'\t- to remove entry\n"
+                + $"translate\t\t\t\t- show translation to word\n"
+                + $"translate 'word'\t\t\t- show translation to word\n"
+                + $"quit\t\t\t\t\t- to quit program\n");
         }
 
         private static void Translate(string[] argument)
