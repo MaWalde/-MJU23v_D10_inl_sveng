@@ -35,7 +35,7 @@
                     {
                         using (StreamReader sr = new StreamReader(argument[1]))
                         {
-                            dictionary = new List<SweEngGloss>(); // Empty it! TODO: Byt till "Clear"
+                            dictionary.Clear();
                             string line = sr.ReadLine();
                             while (line != null)
                             {
@@ -49,7 +49,7 @@
                     {
                         using (StreamReader sr = new StreamReader(defaultFile))
                         {
-                            dictionary = new List<SweEngGloss>(); // Empty it! TODO: Byt till "Clear"
+                            dictionary.Clear();
                             string line = sr.ReadLine();
                             while (line != null)
                             {
