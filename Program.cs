@@ -51,15 +51,15 @@
                 {
                     if (argument.Length == 3)
                     {
-                        dictionary.Add(new SweEngGloss(argument[1], argument[2]));          //Lirar mot första buildern
+                        dictionary.Add(new SweEngGloss(argument[1], argument[2]));
                     }
-                    else if (argument.Length == 1) //Ändra variablenamn till lättläsligt
+                    else if (argument.Length == 1)
                     {
                         Console.WriteLine("Write word in Swedish: "); //Kod lika som på delete, bryt ut och kalla på?
-                        string s = Console.ReadLine();
+                        string sweWord = Console.ReadLine();
                         Console.Write("Write word in English: ");
-                        string e = Console.ReadLine();
-                        dictionary.Add(new SweEngGloss(s, e));
+                        string engWord = Console.ReadLine();
+                        dictionary.Add(new SweEngGloss(sweWord, engWord));
                     }
                 }
                 else if (command == "delete")
@@ -78,14 +78,14 @@
                     else if (argument.Length == 1) //Fixa variabelnamn,
                     {
                         Console.WriteLine("Write word in Swedish: "); //Kod lika som på new, bryt ut och kalla på?
-                        string s = Console.ReadLine();
+                        string sweWord = Console.ReadLine();
                         Console.Write("Write word in English: ");
-                        string e = Console.ReadLine();
+                        string engWord = Console.ReadLine();
                         int index = -1;
                         for (int i = 0; i < dictionary.Count; i++)
                         {
                             SweEngGloss gloss = dictionary[i];
-                            if (gloss.word_swe == s && gloss.word_eng == e)
+                            if (gloss.word_swe == sweWord && gloss.word_eng == engWord)
                                 index = i;
                         }
                         dictionary.RemoveAt(index);
