@@ -107,6 +107,7 @@
                 {
                     if (argument.Length == 2)   
                     {
+                        argument[0] = argument[1];
                         Translate(argument);
                     }
                     else if (argument.Length == 1)
@@ -126,14 +127,17 @@
 
         private static void Translate(string[] argument)
         {
-            if (argument[1]!=null) { argument[0] = argument[1]; }
-            foreach (SweEngGloss gloss in dictionary)  //Bryt ut foreach till båda translate.
+            try
             {
-                if (gloss.word_swe == argument[0])
-                    Console.WriteLine($"English for {gloss.word_swe} is {gloss.word_eng}");
-                if (gloss.word_eng == argument[0])
-                    Console.WriteLine($"Swedish for {gloss.word_eng} is {gloss.word_swe}");
+                foreach (SweEngGloss gloss in dictionary)  //Bryt ut foreach till båda translate.
+                {
+                    if (gloss.word_swe == argument[0])
+                        Console.WriteLine($"English for {gloss.word_swe} is {gloss.word_eng}");
+                    if (gloss.word_eng == argument[0])
+                        Console.WriteLine($"Swedish for {gloss.word_eng} is {gloss.word_swe}");
+                }
             }
+            catch (IndexOutOfRangeException e) { Console.WriteLine(e.Message); }
         }
 
         private static void GetInput(out string sweWord, out string engWord)
