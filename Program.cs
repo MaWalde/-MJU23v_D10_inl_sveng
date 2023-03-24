@@ -24,14 +24,14 @@
                 Console.Write("> ");                                //Lägg till tillgängliga kommandon? ev. hjälp-metod?
                 string[] argument = Console.ReadLine().Split();
                 string command = argument[0];
-                if (command == "quit") 
+                if (command == "quit")
                 {
                     Console.WriteLine("Goodbye!");
                     break;
                 }
                 else if (command == "load")
                 {
-                    if (argument.Length == 2)                     
+                    if (argument.Length == 2)
                     {
                         Load(argument);
                     }
@@ -64,19 +64,26 @@
                 {
                     if (argument.Length == 3) //TBD: Lägg till kod som ignorerar versaler/gemener, samt try-catch
                     {
-                        int index = -1;
-                        for (int i = 0; i < dictionary.Count; i++)
+                        try
                         {
-                            SweEngGloss gloss = dictionary[i];
-                            if (gloss.word_swe == argument[1] && gloss.word_eng == argument[2])
-                                index = i;
+                            int index = -1;
+                            for (int i = 0; i < dictionary.Count; i++)
+                            {
+                                SweEngGloss gloss = dictionary[i];
+                                if (gloss.word_swe == argument[1] && gloss.word_eng == argument[2])
+                                    index = i;
+                            }
+                            dictionary.RemoveAt(index);
                         }
-                        dictionary.RemoveAt(index);
+                        catch (ArgumentOutOfRangeException e)
+                        {
+                            Console.WriteLine($"An error occurred while removing the term: {e.Message}");
+                        }
                     }
                     else if (argument.Length == 1)
                     {
                         string sweWord, engWord;
-                        GetInput(out sweWord,out engWord);
+                        GetInput(out sweWord, out engWord);
                         int index = -1;
                         for (int i = 0; i < dictionary.Count; i++)
                         {
