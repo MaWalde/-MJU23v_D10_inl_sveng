@@ -82,16 +82,23 @@
                     }
                     else if (argument.Length == 1)
                     {
-                        string sweWord, engWord;
-                        GetInput(out sweWord, out engWord);
-                        int index = -1;
-                        for (int i = 0; i < dictionary.Count; i++)
+                        try
                         {
-                            SweEngGloss gloss = dictionary[i];
-                            if (gloss.word_swe == sweWord && gloss.word_eng == engWord)
-                                index = i;
+                            string sweWord, engWord;
+                            GetInput(out sweWord, out engWord);
+                            int index = -1;
+                            for (int i = 0; i < dictionary.Count; i++)
+                            {
+                                SweEngGloss gloss = dictionary[i];
+                                if (gloss.word_swe == sweWord && gloss.word_eng == engWord)
+                                    index = i;
+                            }
+                            dictionary.RemoveAt(index);
                         }
-                        dictionary.RemoveAt(index);
+                        catch (ArgumentOutOfRangeException e) 
+                        { 
+                            Console.WriteLine($"An error occurred while removing the term: {e.Message}"); 
+                        }
                     }
                 }
                 else if (command == "translate")
